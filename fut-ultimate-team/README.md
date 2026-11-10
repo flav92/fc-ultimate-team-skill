@@ -17,7 +17,7 @@ Ultimate Team est un **marché volatil** : prix, cartes, DCE, évolutions et obj
 ## Ce qu'il faut
 
 1. Une IA qui peut **piloter un navigateur** (voir `references/navigateurs-ia.md`). Sans accès au web, la méthode fonctionne en mode dégradé : le joueur copie les pages.
-2. Idéalement, une IA avec **mémoire** ; sinon, le fichier d'état du club.
+2. Idéalement, une IA avec **mémoire** ; dans tous les cas, `references/etat-club.md` (créé depuis `references/etat-club-modele.md`) reste **l'unique état du club** — la mémoire de l'IA n'y fait que pointer.
 
 ## Installation
 
@@ -32,9 +32,10 @@ Le dossier suit le standard ouvert **Agent Skills** (`SKILL.md` avec `name` et `
 
 Puis :
 1. Copier `references/profil-joueur-modele.md` en `profil-joueur.md` et le remplir.
-2. Si l'IA n'a pas de mémoire : copier `references/etat-club-modele.md` en `etat-club.md`.
-3. Dire à l'IA : « On joue à Ultimate Team, applique le skill ».
-4. **Recommandé : installer le rappel de vérification** (voir ci-dessous).
+2. Copier `references/etat-club-modele.md` en `etat-club.md` : c'est **l'unique état du club**, relu à chaque session et mis à jour à chaque décision, quelle que soit la mémoire de l'IA.
+3. Si plusieurs IA sont utilisées : après la première session, chaque IA synthétise sa propre mémoire dans `memoires/<son-nom>/SYNTHESE.md` au format `references/synthese-memoire-modele.md` (le dossier est livré vide, voir SKILL.md section 7).
+4. Dire à l'IA : « On joue à Ultimate Team, applique le skill ».
+5. **Recommandé : installer le rappel de vérification** (voir ci-dessous).
 
 ### Rappel de vérification automatique (fortement recommandé)
 
@@ -73,6 +74,7 @@ Sous Windows, écrire le chemin complet, par exemple `C:/Users/<nom>/.claude/ski
 | `references/navigateurs-ia.md` | Piloter un navigateur selon l'IA |
 | `references/profil-joueur-modele.md` | Modèle de profil du joueur |
 | `references/etat-club-modele.md` | Modèle de suivi du club |
+| `references/synthese-memoire-modele.md` | Format standard des synthèses de mémoire multi-IA (`memoires/`, livré vide) |
 | `scripts/fut_rappel.py` | Hook de Claude Code : rappel de vérification à chaque message (voir Installation) |
 
 ## Nouvelle édition (FC 28 et après)

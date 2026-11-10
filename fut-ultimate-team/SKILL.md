@@ -18,14 +18,14 @@ Ce skill est né d'un constat : **aucun outil de coaching technique n'existait**
 - `SKILL.md` (ce fichier) : la méthode durable, valable d'une édition à l'autre.
 - `references/fc27.md` : le savoir propre à **FC 27** (sources, mécaniques, évolutions, events, noms français). **À remplacer** par un `fcXX.md` à chaque nouvelle édition.
 - `references/profil-joueur.md` : le profil du joueur coaché (style, projet, préférences). Personnel : partir de `references/profil-joueur-modele.md`.
-- `references/etat-club-modele.md` : modèle pour suivre l'état du club (équipe, crédits, évolutions en cours, objectifs). Si l'IA a une **mémoire persistante**, l'état y vit ; sinon, tenir ce fichier à jour et le relire à chaque session.
+- `references/etat-club-modele.md` : le modèle pour créer `references/etat-club.md`, **l'unique état du club** (équipe, crédits, évolutions en cours, objectifs). La mémoire de l'IA n'y fait que pointer, elle ne le recopie jamais (section 7) ; relire ce fichier à chaque session.
 - `references/navigateurs-ia.md` : comment piloter un navigateur selon l'IA utilisée (Claude, ChatGPT, Gemini, agents de code…).
 - `references/synthese-memoire-modele.md` : le format standard des synthèses de mémoire.
 - `memoires/<nom-ia>/SYNTHESE.md` : dossier **vide à la distribution** — chaque IA y dépose le résumé de sa propre mémoire au format standard (section 7).
 
 Lire le profil, l'état du club, le fichier de l'édition en cours et la synthèse de mémoire de l'IA en cours avant de conseiller.
 
-**Plusieurs IA :** si le joueur alterne entre plusieurs IA, appliquer d'abord le skill `multi-ia` (synchro des historiques). L'état du club (`references/etat-club.md`) est le fichier où intégrer ce qu'une autre IA a appris ; le mettre à jour en fin de session. Chaque IA résume aussi sa propre mémoire dans `memoires/<son-nom>/SYNTHESE.md` (section 7) : c'est ce qui rend son savoir réutilisable par les autres au même format.
+**Plusieurs IA :** si le joueur alterne entre plusieurs IA et qu'un skill `multi-ia` est installé, l'appliquer d'abord (synchro des historiques) ; sinon, suivre la règle générique de la section 7. L'état du club (`references/etat-club.md`) est le fichier où intégrer ce qu'une autre IA a appris ; le mettre à jour en fin de session. Chaque IA résume aussi sa propre mémoire dans `memoires/<son-nom>/SYNTHESE.md` (section 7) : c'est ce qui rend son savoir réutilisable par les autres au même format.
 
 **Compatibilité :** ce skill suit le standard ouvert **Agent Skills** (`SKILL.md` avec `name` et `description`), lu par Claude Code, OpenAI Codex, Gemini CLI, GitHub Copilot, Cursor et d'autres. Dans une IA de chat sans skills, coller ce fichier dans les instructions personnalisées et joindre les fichiers `references/`. Voir `README.md`.
 
@@ -49,7 +49,7 @@ Ne jamais combler un message de félicitations avec une appréciation inventée.
 3. **Le site de recherche large** (FC 27 : FUTBIN) : filtres par poste, championnat, club. Souvent en retard sur les transferts.
 4. **L'actualité officielle** (EA, notes de mise à jour) et les données du **football réel** (Transfermarkt).
 5. **Guides, forums, réseaux sociaux** : à recouper, jamais seuls.
-6. **La mémoire de l'IA et l'état du club** : du contexte, **jamais une source**.
+6. **La mémoire de l'IA et l'état du club** : du contexte, **jamais une source de donnée de jeu** (prix, note, condition). Elles peuvent en revanche **prouver une décision passée** (qui a décidé quoi, quand, pourquoi — voir la contestation, section 7).
 
 **Routine d'actualité au début de chaque session :**
 1. Nouvelles DCE et DCE qui expirent bientôt.
@@ -142,8 +142,8 @@ Les sites changent : en un an, l'édition, les noms des modes, voire les sites d
 
 - Donner un prix, une note, un club ou une condition **sans source consultée maintenant**.
 - Qualifier un joueur ou une équipe adverse (« solide », « sans vrai projet ») **sans avoir regardé ses notes**, juste pour meubler une réponse. Le joueur l'a relevé tout de suite : « solide, mais par rapport à quoi ? Tu n'as même pas regardé sur FUT.GG. »
-- Résumer une condition d'objectif de mémoire alors que le texte exact était disponible (« un but de Tchouaméni » au lieu de « l'équipe marque avec un joueur du Real titulaire »).
-- Oublier des joueurs du club (cartes non échangeables reçues en récompense, comme Upamecano) en proposant une compo : relire l'état du club en entier, et demander au joueur s'il en manque.
+- Résumer une condition d'objectif de mémoire alors que le texte exact était disponible (« un but du milieu » au lieu de « l'équipe marque avec un joueur du club Y titulaire »).
+- Oublier des joueurs du club (cartes non échangeables reçues en récompense) en proposant une compo : relire l'état du club en entier, et demander au joueur s'il en manque.
 - Confondre niveau d'event, difficulté et mode (un même mot peut désigner deux choses).
 - Compo générique, « au hasard » ou survendue, sans notes par poste ni ressenti du joueur.
 - Oublier une limite de note (banc compris) ou mal compter une condition d'équipe.
@@ -161,18 +161,26 @@ Les sites changent : en un an, l'édition, les noms des modes, voire les sites d
 
 ## 7. Mémoires, statuts de vérité et adaptation au joueur
 
-**Le skill est le carrefour :** la méthode vit ici, l'état du club dans `references/`, et chaque IA dépose le résumé de sa mémoire dans `memoires/<son-nom>/SYNTHESE.md` (format : `references/synthese-memoire-modele.md`). À la première session, une IA qui a une mémoire chargée la synthétise ; ensuite, mise à jour après chaque session si du neuf. La synthèse est un fichier **dérivé** : en cas de contestation, on remonte à la mémoire brute et aux transcriptions (les preuves), jamais à la synthèse. Le dossier `memoires/` est vide à la distribution et reste gitignoré : aucune donnée personnelle dans le dépôt public.
+**Le skill est le carrefour :** la méthode vit ici, l'état du club dans `references/etat-club.md` (**unique** — la mémoire de l'IA n'y fait que pointer, jamais la recopier), et chaque IA dépose le résumé de sa mémoire dans `memoires/<son-nom>/SYNTHESE.md` (noms normalisés en minuscules : `claude`, `chatgpt`, `gemini`…). Format : `references/synthese-memoire-modele.md`. Le dossier `memoires/` est vide à la distribution et reste gitignoré : aucune donnée personnelle dans le dépôt public.
 
-**Statuts de vérité (à porter sur chaque information) :**
-- **vérifié** : source consultée à la date dite (FUT.GG, FUTBIN, EA…) ;
-- **confirmé en jeu** : vu sur la tuile ou la fiche par le joueur ;
-- **déclaré** : parole du joueur, datée — à vérifier avant d'influencer un choix ;
-- **déduit** : règle tirée de choix passés enregistrés, origine citée — hypothèse jusqu'à revalidation avec le joueur ;
-- **supposé** : rien de tout cela — présenté comme tel, jamais comme un fait.
+**Contrat de session :**
+1. **Début** : lire `references/profil-joueur.md`, `references/etat-club.md`, le fichier de l'édition (`references/fcXX.md`), et les synthèses des autres IA (`memoires/*/SYNTHESE.md`) ; demander ce qui a changé (crédits, packs, objectifs).
+2. **Fin** : mettre à jour `etat-club.md` (décisions datées, avec raison et statut), puis **sa propre synthèse** si sa mémoire a bougé. Pointer vers les fichiers, ne jamais les recopier.
+3. **IA de chat sans accès fichiers** : la synthèse et les mises à jour sont renvoyées au joueur dans le message (il les colle dans les fichiers lui-même) — le contrat tient sans écriture.
 
-**Entretien du joueur (construire le profil) :** poser peu de questions — la phrase-projet ou son absence (un joueur sans projet est piloté par la méta : meilleurs GG par poste, % de compo, rôles ; un joueur avec projet le dit en une phrase : « que des Marseillais »), la plateforme, les modes, le budget mental. Le reste se **déduit** de l'analyse croisée des choix enregistrés (ce qu'il garde, ce qu'il refuse, avec leurs raisons) : chaque déduction est **proposée, jamais imposée**, et **revalidée avec le joueur au moment de servir**. Une déduction non revalidée reste « supposé ». Le profil capture la phrase-projet **et ses exceptions validées** (ex. un filtre de club peut compter aussi les joueurs passés par ce club — l'histoire se vérifie sur Transfermarkt, le statut actuel sur FUT.GG et en jeu).
+**Règle multi-IA générique (sans skill dédié) :** si l'IA a accès aux historiques ou mémoires d'autres IA, elle en extrait les **décisions datées** et les intègre dans `etat-club.md` (une seule source) ; les ressentis de l'autre IA ne sont pas copiés. Les faits cités par une autre IA restent du **contexte** : les revérifier sur les sources avant de conseiller.
 
-**Contestation :** les mémoires (choix datés avec leurs raisons) sont les **preuves**. Face à une contestation, reprendre les entrées qui ont fondé la règle, puis laisser le joueur arbitrer. Un humain peut changer d'avis, rien n'est figé : un changement est une **nouvelle entrée datée** qui remplace la valeur active, l'ancienne est conservée (jamais effacée).
+**Statuts de vérité (à porter sur chaque information), par ordre de fiabilité :**
+1. **confirmé en jeu** : vu sur la tuile ou la fiche par le joueur (la vérité absolue) ;
+2. **vérifié** : source temps réel consultée à la date dite (FUT.GG) ;
+3. **vérifié (site en retard)** : FUTBIN ou autre — les clubs/championnats y sont souvent périmés, revérifier ;
+4. **déclaré** : parole du joueur, datée. Deux cas : un **fait** déclaré (club, prix, possession d'une carte) → à vérifier avant d'influencer un choix ; un **ressenti ou une préférence** (tiki-taka, un joueur qu'il aime) → appliqué tel quel, avec la date (il n'est pas vérifiable, et c'est le joueur qui décide) ;
+5. **déduit** : règle tirée de choix passés enregistrés, origine citée — hypothèse jusqu'à revalidation avec le joueur ;
+6. **supposé** : rien de tout cela — présenté comme tel, jamais comme un fait.
+
+**Entretien du joueur (construire le profil) :** poser peu de questions — la phrase-projet ou son absence (un joueur sans projet est piloté par la méta : meilleurs GG par poste, % de compo, rôles ; un joueur avec projet le dit en une phrase : « que des Marseillais »), la plateforme, les modes, le budget mental (la dépense qu'il peut engager sans hésiter). Le reste se **déduit** de l'analyse croisée des choix enregistrés (ce qu'il garde, ce qu'il refuse, avec leurs raisons) : chaque déduction est **proposée, jamais imposée**, et **revalidée avec le joueur au moment de servir**. Une déduction non revalidée reste « supposé ». Le profil capture la phrase-projet **et ses exceptions validées** (ex. un filtre de club peut compter aussi les joueurs passés par ce club — l'histoire se vérifie sur Transfermarkt, le statut actuel sur FUT.GG et en jeu).
+
+**Contestation :** les mémoires (choix datés avec leurs raisons) sont les **preuves** de qui a dit ou décidé quoi, et quand — jamais une source de donnée de jeu. Face à une contestation, reprendre les entrées qui ont fondé la règle, puis laisser le joueur arbitrer. Un humain peut changer d'avis, rien n'est figé : un changement est une **nouvelle entrée datée** qui remplace la valeur active, l'ancienne est conservée (jamais effacée).
 
 **Résultats et causalité :** la raison d'une décision n'est pas la cause d'un résultat — le résultat dépend d'un contexte extérieur (adversaire, forme, variance). Un mauvais résultat ne condamne pas une décision : vérifier d'abord si elle a eu un impact réel (attribution datée : **interne / externe / inconnue**). Réessayer teste les faits, pas la causalité ; changer sans impact interne établi ne change rien.
 

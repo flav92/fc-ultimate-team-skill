@@ -7,10 +7,10 @@
 
 Mis à jour le : <date> (par <IA>)
 
-## Décisions (datées, avec raison)
-| Date | Décision | Raison |
-|---|---|---|
-|  |  |  |
+## Décisions (datées, avec raison et statut)
+| Date | Décision | Raison | Statut | Remplace (date) |
+|---|---|---|---|---|
+| 2026-11-10 *(exemple fictif à retirer)* | Garder le latéral droit du club | attachement du joueur à ce joueur | confirmé en jeu | — |
 
 ## Règles validées (origine, dernière validation)
 | Règle | Origine (déclarée / déduite de / recadrage du) | Dernière validation |
@@ -18,7 +18,7 @@ Mis à jour le : <date> (par <IA>)
 |  |  |  |
 
 ## Préférences et non-négociables
-<!-- Pointeurs vers les fichiers de référence du skill ; ne recopier que ce qui n'existe nulle part ailleurs. -->
+<!-- Pointeurs vers les fichiers de référence du skill ; ne recopier que ce qui n'existe nulle part ailleurs. Chaque préférence porte sa date. -->
 
 ## Déductions en attente de revalidation
 | Déduction | Preuves (choix et dates) | Revalidée ? |
