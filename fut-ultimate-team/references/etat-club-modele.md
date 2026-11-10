@@ -1,6 +1,6 @@
 # État du club (modèle à tenir à jour)
 
-À utiliser si l'IA n'a pas de mémoire persistante. Copier en `etat-club.md`, le relire au début de chaque session, le mettre à jour à la fin (et dès qu'une décision importante est prise). **Dater chaque information** : un état du club périme vite.
+Copier en `etat-club.md` (dans `references/`, à côté du modèle) : c'est **l'unique état du club, requis pour toutes les IA**, avec ou sans mémoire persistante (la mémoire de l'IA n'y fait que pointer). Le relire au début de chaque session, le mettre à jour à la fin (et dès qu'une décision importante est prise). **Dater chaque information** : un état du club périme vite.
 
 ## Mis à jour le : AAAA-MM-JJ HH:MM
 

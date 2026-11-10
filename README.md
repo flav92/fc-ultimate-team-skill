@@ -6,7 +6,7 @@ Un coach Ultimate Team **en français**, pour n'importe quelle IA. Il n'invente 
 
 ## Pourquoi ce skill existe
 
-Avant de le créer, une recherche n'avait trouvé **que des bots d'achat-revente** sur le marché des transferts (interdits par EA), et **aucun outil de coaching technique** : compos, rôles, évolutions, DCE, objectifs, events. Ce skill comble ce manque. Il a été construit en jouant, pendant des heures, avec un joueur expert qui a corrigé chaque erreur.
+Avant de le créer, une recherche n'avait trouvé **que des bots d'achat-revente** sur le marché des transferts (interdits par EA), et **aucun outil de coaching technique** : compos (les compositions d'équipe), rôles, évolutions (« Evolutions » en jeu : faire progresser une carte via des défis), DCE (les « Squad Building Challenges », défis de création d'équipe), objectifs, events (événements à durée limitée). Ce skill comble ce manque. Il a été construit en jouant, pendant des heures, avec un joueur expert qui a corrigé chaque erreur.
 
 ## Le principe : tout vérifier en temps réel
 
@@ -17,12 +17,12 @@ Ultimate Team est un **marché volatil** : prix, cartes, DCE, évolutions et obj
 
 ## Ce qu'il faut
 
-1. Une IA qui peut **piloter un navigateur** (voir `references/navigateurs-ia.md`). Sans accès au web, la méthode fonctionne en mode dégradé : le joueur copie les pages.
-2. Idéalement, une IA avec **mémoire** ; sinon, le fichier d'état du club.
+1. Une IA qui peut **piloter un navigateur** (voir `references/navigateurs-ia.md`). Sans navigateur piloté, la méthode ne marche pas telle quelle : l'IA coach à partir des pages copiées ou des captures fournies par le joueur, et signale chaque donnée non vérifiée.
+2. Idéalement, une IA avec **mémoire** ; dans tous les cas, l'état du club (`references/etat-club.md`) est **requis pour toutes les IA**, y compris celles qui ont une mémoire — la mémoire n'y fait que pointer.
 
 ## Installation
 
-Le dossier suit le standard ouvert **Agent Skills** (`SKILL.md` avec `name` et `description`). Copier le dossier `fut-ultimate-team/` :
+**La procédure de référence, à jour, est celle de [`fut-ultimate-team/README.md`](fut-ultimate-team/README.md)** : récupération du dépôt, arborescence attendue, remplissage minimal de l'état du club, synthèse multi-IA, test du rappel automatique. Le dossier suit le standard ouvert **Agent Skills** (`SKILL.md` avec `name` et `description`). Copier le dossier `fut-ultimate-team/` :
 
 | IA / outil | Où copier le dossier |
 |---|---|
@@ -31,10 +31,12 @@ Le dossier suit le standard ouvert **Agent Skills** (`SKILL.md` avec `name` et `
 | **OpenAI Codex, Gemini CLI, GitHub Copilot, Cursor** et autres outils compatibles Agent Skills | `.agents/skills/` dans le projet, ou le dossier de skills propre à l'outil (vérifier sa documentation, les chemins varient) |
 | **IA de chat sans skills** (ChatGPT, Gemini, Mistral…) | Coller le contenu de `SKILL.md` dans les instructions personnalisées (GPT personnalisé, Gem, projet…) et joindre les fichiers de `references/` comme documents |
 
-Puis :
-1. Copier `references/profil-joueur-modele.md` en `profil-joueur.md` et le remplir.
-2. Si l'IA n'a pas de mémoire : copier `references/etat-club-modele.md` en `etat-club.md`.
-3. Dire à l'IA : « On joue à Ultimate Team, applique le skill ».
+En résumé, après avoir copié le dossier :
+1. Copier `references/profil-joueur-modele.md` en `references/profil-joueur.md` et le remplir.
+2. Copier `references/etat-club-modele.md` en `references/etat-club.md` : **l'état du club est requis pour toutes les IA**, avec ou sans mémoire (la mémoire n'y fait que pointer), et il est relu à chaque session.
+3. Si plusieurs IA : chaque IA synthétise sa mémoire dans `memoires/<son-nom>/SYNTHESE.md` (voir SKILL.md section 7).
+4. Dire à l'IA : « On joue à Ultimate Team, applique le skill ».
+5. Recommandé : installer le rappel de vérification (voir [`fut-ultimate-team/README.md`](fut-ultimate-team/README.md)).
 
 ## Contenu
 
@@ -45,6 +47,8 @@ Puis :
 | `references/navigateurs-ia.md` | Piloter un navigateur selon l'IA |
 | `references/profil-joueur-modele.md` | Modèle de profil du joueur |
 | `references/etat-club-modele.md` | Modèle de suivi du club |
+| `references/synthese-memoire-modele.md` | Format standard des synthèses de mémoire multi-IA (`memoires/`) |
+| `scripts/fut_rappel.py` | Hook de Claude Code : rappel de vérification à chaque message (voir fut-ultimate-team/README.md) |
 
 ## Nouvelle édition (FC 28 et après)
 

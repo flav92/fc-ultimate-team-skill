@@ -161,12 +161,12 @@ Les sites changent : en un an, l'édition, les noms des modes, voire les sites d
 
 ## 7. Mémoires, statuts de vérité et adaptation au joueur
 
-**Le skill est le carrefour :** la méthode vit ici, l'état du club dans `references/etat-club.md` (**unique** — la mémoire de l'IA n'y fait que pointer, jamais la recopier), et chaque IA dépose le résumé de sa mémoire dans `memoires/<son-nom>/SYNTHESE.md` (noms normalisés en minuscules : `claude`, `chatgpt`, `gemini`…). Format : `references/synthese-memoire-modele.md`. Le dossier `memoires/` est vide à la distribution et reste gitignoré : aucune donnée personnelle dans le dépôt public.
+**Le skill est le carrefour :** la méthode vit ici, l'état du club dans `references/etat-club.md` (**unique, requis pour toutes les IA** — la mémoire de l'IA n'y fait que pointer, jamais la recopier), et chaque IA dépose le résumé de sa mémoire dans `memoires/<son-nom>/SYNTHESE.md` (noms normalisés en minuscules : `claude`, `chatgpt`, `gemini`…). Format : `references/synthese-memoire-modele.md`. Le dossier `memoires/` n'existe pas dans le dépôt (il reste gitignoré) : c'est normal. L'IA qui a accès aux fichiers crée `memoires/<son-nom>/SYNTHESE.md` (ex. `memoires/chatgpt/SYNTHESE.md`) au premier enregistrement ; l'IA de chat demande au joueur de créer le dossier. Aucune donnée personnelle dans le dépôt public.
 
 **Contrat de session :**
 1. **Début** : lire `references/profil-joueur.md`, `references/etat-club.md`, le fichier de l'édition (`references/fcXX.md`), et les synthèses des autres IA (`memoires/*/SYNTHESE.md`) ; demander ce qui a changé (crédits, packs, objectifs).
 2. **Fin** : mettre à jour `etat-club.md` (décisions datées, avec raison et statut), puis **sa propre synthèse** si sa mémoire a bougé. Pointer vers les fichiers, ne jamais les recopier.
-3. **IA de chat sans accès fichiers** : la synthèse et les mises à jour sont renvoyées au joueur dans le message (il les colle dans les fichiers lui-même) — le contrat tient sans écriture.
+3. **IA de chat sans accès fichiers** : cycle manuel complet. Au début de session, demander au joueur de joindre le profil, l'état du club **à jour**, le fichier de l'édition et les synthèses disponibles. À la fin, rendre chaque mise à jour (état du club, synthèse) en **bloc Markdown avec son chemin de destination** (ex. `references/etat-club.md`) : le joueur les applique à sa copie locale, puis re-joint les fichiers à jour à la session suivante. Sans cette remise, la conversation suivante repart d'une pièce jointe périmée — le contrat tient sans écriture, mais exige la passation.
 
 **Règle multi-IA générique (sans skill dédié) :** si l'IA a accès aux historiques ou mémoires d'autres IA, elle en extrait les **décisions datées** et les intègre dans `etat-club.md` (une seule source) ; les ressentis de l'autre IA ne sont pas copiés. Les faits cités par une autre IA restent du **contexte** : les revérifier sur les sources avant de conseiller.
 

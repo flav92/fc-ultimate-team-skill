@@ -1,6 +1,7 @@
 # Hook UserPromptSubmit : rappel de vérification pour le coaching Ultimate Team.
 # Se déclenche si le message parle de FUT, ou si la session a chargé le skill fut-ultimate-team.
 import json
+import os
 import re
 import sys
 
@@ -18,6 +19,26 @@ RAPPEL = (
     "phrase factuelle avant d'envoyer."
 )
 
+TAILLE_BLOC = 1 << 20  # 1 Mo : lecture par blocs, mémoire constante même sur une grosse transcription.
+
+
+def transcript_contient(chemin, marqueur="fut-ultimate-team"):
+    # Lecture par blocs depuis le début, arrêt dès la première occurrence du marqueur.
+    cible = marqueur.encode("utf-8")
+    chevauchement = len(cible) - 1  # pour un marqueur à cheval sur deux blocs
+    try:
+        with open(chemin, "rb") as f:
+            precedent = b""
+            while True:
+                bloc = f.read(TAILLE_BLOC)
+                if not bloc:
+                    return False
+                if cible in precedent + bloc:
+                    return True
+                precedent = bloc[-chevauchement:] if chevauchement else b""
+    except Exception:
+        return False
+
 
 def main():
     try:
@@ -29,11 +50,7 @@ def main():
     if not actif:
         chemin = data.get("transcript_path")
         if chemin:
-            try:
-                with open(chemin, encoding="utf-8", errors="ignore") as f:
-                    actif = "fut-ultimate-team" in f.read()
-            except Exception:
-                pass
+            actif = transcript_contient(chemin)
     if actif:
         print(json.dumps({
             "hookSpecificOutput": {
