@@ -34,6 +34,35 @@ Puis :
 1. Copier `references/profil-joueur-modele.md` en `profil-joueur.md` et le remplir.
 2. Si l'IA n'a pas de mémoire : copier `references/etat-club-modele.md` en `etat-club.md`.
 3. Dire à l'IA : « On joue à Ultimate Team, applique le skill ».
+4. **Recommandé : installer le rappel de vérification** (voir ci-dessous).
+
+### Rappel de vérification automatique (fortement recommandé)
+
+**Pourquoi :** le skill est lu une fois, au début de la session. Au fil d'une longue conversation, l'IA finit par « meubler » ses réponses avec des avis non vérifiés (« équipe solide », « joueur fort »), surtout dans les messages détendus. C'est arrivé en pratique, alors que la règle était écrite noir sur blanc. La solution qui marche : **un rappel injecté à chaque message**.
+
+**Claude Code** : le script `scripts/fut_rappel.py` (Python 3) ajoute ce rappel à chaque message qui parle d'Ultimate Team, ou dès que la session a chargé le skill. Ajouter dans `~/.claude/settings.json` (en adaptant le chemin vers le dossier du skill) :
+
+```json
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$HOME/.claude/skills/fut-ultimate-team/scripts/fut_rappel.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Sous Windows, écrire le chemin complet, par exemple `C:/Users/<nom>/.claude/skills/fut-ultimate-team/scripts/fut_rappel.py`. S'il y a déjà des hooks, **ajouter** cette entrée sans remplacer les autres. Pour vérifier ou désactiver : commande `/hooks`.
+
+**Autres IA** : si l'outil ne gère pas les hooks, ajouter cette phrase au début des instructions personnalisées : *« À chaque réponse sur Ultimate Team : aucune note, aucun prix, aucune condition, aucun adjectif sur un joueur ou une équipe sans vérification sur le site de référence. Sinon, ne pas juger, ou écrire "non vérifié". »*
 
 ## Contenu
 
@@ -44,6 +73,7 @@ Puis :
 | `references/navigateurs-ia.md` | Piloter un navigateur selon l'IA |
 | `references/profil-joueur-modele.md` | Modèle de profil du joueur |
 | `references/etat-club-modele.md` | Modèle de suivi du club |
+| `scripts/fut_rappel.py` | Hook de Claude Code : rappel de vérification à chaque message (voir Installation) |
 
 ## Nouvelle édition (FC 28 et après)
 
