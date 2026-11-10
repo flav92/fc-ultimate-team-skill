@@ -12,10 +12,10 @@ Mis à jour le : <date> (par <IA>)
 |---|---|---|---|---|
 | 2026-11-10 *(exemple fictif à retirer)* | Garder le gardien actuel du club | préféré du joueur | déclaré (préférence) | — |
 
-## Règles validées (origine, dernière validation)
-| Règle | Origine (déclarée / déduite de / recadrage du) | Dernière validation |
-|---|---|---|
-|  |  |  |
+## Règles validées (origine, statut, dernière validation)
+| Règle | Origine (déclarée / déduite de / recadrage du) | Statut | Dernière validation | Remplace (date) |
+|---|---|---|---|---|
+|  |  |  |  |  |
 
 ## Préférences et non-négociables
 <!-- Pointeurs vers les fichiers de référence du skill ; ne recopier que ce qui n'existe nulle part ailleurs. Chaque préférence porte sa date. -->
