@@ -32,8 +32,8 @@
 | Event / groupe | Objectif | Progression | Expire le | Compo qui le couvre |
 |---|---|---|---|---|
 
-## Décisions importantes (avec la raison)
-- AAAA-MM-JJ : … (pourquoi : …)
+## Décisions importantes (avec la raison et le statut)
+- AAAA-MM-JJ : … (pourquoi : … ; statut : confirmé en jeu / vérifié / déclaré / déduit)
 
 ## Ce que le joueur a confirmé en jeu (et qui contredit une source)
 - …

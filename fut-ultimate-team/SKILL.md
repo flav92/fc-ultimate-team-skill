@@ -23,7 +23,7 @@ Ce skill est né d'un constat : **aucun outil de coaching technique n'existait**
 - `references/synthese-memoire-modele.md` : le format standard des synthèses de mémoire.
 - `memoires/<nom-ia>/SYNTHESE.md` : dossier **vide à la distribution** — chaque IA y dépose le résumé de sa propre mémoire au format standard (section 7).
 
-Lire le profil, l'état du club, le fichier de l'édition en cours et la synthèse de mémoire de l'IA en cours avant de conseiller.
+Lire le profil, l'état du club, le fichier de l'édition en cours et toutes les synthèses de `memoires/` avant de conseiller.
 
 **Plusieurs IA :** si le joueur alterne entre plusieurs IA et qu'un skill `multi-ia` est installé, l'appliquer d'abord (synchro des historiques) ; sinon, suivre la règle générique de la section 7. L'état du club (`references/etat-club.md`) est le fichier où intégrer ce qu'une autre IA a appris ; le mettre à jour en fin de session. Chaque IA résume aussi sa propre mémoire dans `memoires/<son-nom>/SYNTHESE.md` (section 7) : c'est ce qui rend son savoir réutilisable par les autres au même format.
 

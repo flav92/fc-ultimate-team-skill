@@ -10,7 +10,7 @@ Mis à jour le : <date> (par <IA>)
 ## Décisions (datées, avec raison et statut)
 | Date | Décision | Raison | Statut | Remplace (date) |
 |---|---|---|---|---|
-| 2026-11-10 *(exemple fictif à retirer)* | Garder le latéral droit du club | attachement du joueur à ce joueur | confirmé en jeu | — |
+| 2026-11-10 *(exemple fictif à retirer)* | Garder le gardien actuel du club | préféré du joueur | déclaré (préférence) | — |
 
 ## Règles validées (origine, dernière validation)
 | Règle | Origine (déclarée / déduite de / recadrage du) | Dernière validation |
