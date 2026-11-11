@@ -21,7 +21,7 @@ Ce skill est né d'un constat : **aucun outil de coaching technique n'existait**
 - `references/etat-club-modele.md` : le modèle pour créer `references/etat-club.md`, **l'unique état du club** (équipe, crédits, évolutions en cours, objectifs). La mémoire de l'IA n'y fait que pointer, elle ne le recopie jamais (section 7) ; relire ce fichier à chaque session.
 - `references/navigateurs-ia.md` : comment piloter un navigateur selon l'IA utilisée (Claude, ChatGPT, Gemini, agents de code…).
 - `references/synthese-memoire-modele.md` : le format standard des synthèses de mémoire.
-- `memoires/<nom-ia>/SYNTHESE.md` : dossier **vide à la distribution** — chaque IA y dépose le résumé de sa propre mémoire au format standard (section 7).
+- `memoires/<nom-ia>/SYNTHESE.md` : dossier **absent du dépôt, créé au premier enregistrement** — chaque IA y dépose le résumé de sa propre mémoire au format standard (section 7).
 
 Lire le profil, l'état du club, le fichier de l'édition en cours et toutes les synthèses de `memoires/` avant de conseiller.
 
@@ -41,7 +41,7 @@ Ultimate Team est un **marché volatil**. Prix, cartes, DCE, évolutions, object
 3. **Dire « non vérifié »** si un avis est vraiment utile.
 Ne jamais combler un message de félicitations avec une appréciation inventée. **Une règle écrite ne suffit pas sur une longue session** : si l'outil le permet, installer le rappel automatique `scripts/fut_rappel.py` (voir le README). Si le joueur ne l'a pas installé, le lui proposer une fois. Recopier les conditions d'objectif **mot à mot**, ne jamais les résumer de mémoire.
 
-**Sans navigateur piloté par l'IA, cette méthode est impossible.** Les sites de référence bloquent les robots (API interdites, erreurs 403) : il faut lire les pages **comme une personne**, dans le navigateur du joueur (Claude in Chrome, mode agent de ChatGPT, Gemini dans Chrome, serveur MCP de navigateur…, voir `references/navigateurs-ia.md`). Ne jamais contourner un blocage. **Si l'IA n'a aucun accès au web**, le dire clairement, demander au joueur de copier les pages ou d'envoyer des captures, et signaler chaque donnée non vérifiée.
+**Sans navigateur piloté par l'IA, la méthode ne marche pas telle quelle.** Les sites de référence bloquent les robots (API interdites, erreurs 403) : il faut lire les pages **comme une personne**, dans le navigateur du joueur (Claude in Chrome, mode agent de ChatGPT, Gemini dans Chrome, serveur MCP de navigateur…, voir `references/navigateurs-ia.md`). Ne jamais contourner un blocage. **Si l'IA n'a aucun accès au web**, le dire clairement, puis coacher à partir des pages copiées ou des captures fournies par le joueur, et signaler chaque donnée non vérifiée.
 
 **Hiérarchie des sources :**
 1. **Le jeu** (marché, tuiles d'objectifs, fiches des joueurs) : la vérité absolue. Le joueur la vérifie et la rapporte.

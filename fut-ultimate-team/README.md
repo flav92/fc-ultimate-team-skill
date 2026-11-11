@@ -93,7 +93,7 @@ Sous Windows, écrire le chemin complet, par exemple `C:/Users/<nom>/.claude/ski
 
 **Test :** dans une nouvelle session, envoyer un message contenant « Ultimate Team » : le rappel doit apparaître. Envoyer ensuite un message neutre (« bonjour ») dans une session où le skill a été chargé : le rappel doit apparaître aussi. Dans une session sans skill chargé, le message neutre ne déclenche rien (comportement attendu).
 
-**Limites :** le rappel ne se déclenche que si le script peut lire la transcription ; sur une très longue session, chaque message neutre re-scanne la transcription (par blocs d'environ 1 Mo depuis le début du fichier, en s'arrêtant dès qu'il trouve le marqueur, en mémoire constante). La continuité dépend aussi du `timeout` du hook (10 s ici).
+**Limites :** sur un message **neutre** (sans mot-clé), le rappel exige que le script puisse lire la transcription ; un message contenant un mot-clé déclenche le rappel même sans transcription. Sur une très longue session, chaque message neutre re-scanne la transcription (par blocs d'environ 1 Mo depuis le début du fichier, en s'arrêtant dès qu'il trouve le marqueur, en mémoire constante). La continuité dépend aussi du `timeout` du hook (10 s ici).
 
 **Autres IA** : si l'outil ne gère pas les hooks, ajouter cette phrase au début des instructions personnalisées : *« À chaque réponse sur Ultimate Team : aucune note, aucun prix, aucune condition, aucun adjectif sur un joueur ou une équipe sans vérification sur le site de référence. Sinon, ne pas juger, ou écrire "non vérifié". »*
 

@@ -17,7 +17,7 @@ Mis à jour le : <date> (par <IA>)
 ## Règles validées (origine, statut, dernière validation)
 | Règle | Origine (déclarée / déduite de / recadrage du) | Statut | Dernière validation | Remplace (date) |
 |---|---|---|---|---|
-| Reprendre les DCE avant de vendre un fourrage *(exemple fictif à retirer)* | déduite des ventes du 2026-11-09 | confirmé en jeu | 2026-11-10 | 2026-11-09 |
+| Reprendre les DCE avant de vendre un fourrage *(exemple fictif à retirer)* | déduite des ventes du 2026-11-09, validée par le joueur | déclaré (préférence) | 2026-11-10 | 2026-11-09 |
 |  |  |  |  |  |
 
 ## Préférences et non-négociables

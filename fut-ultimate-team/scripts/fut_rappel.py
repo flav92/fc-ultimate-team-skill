@@ -1,7 +1,6 @@
 # Hook UserPromptSubmit : rappel de vérification pour le coaching Ultimate Team.
 # Se déclenche si le message parle de FUT, ou si la session a chargé le skill fut-ultimate-team.
 import json
-import os
 import re
 import sys
 
